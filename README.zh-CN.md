@@ -1,46 +1,42 @@
 # Wails + Vue 3 Typescript
 
-English | [简体中文](README.zh-CN.md)
+[English](README.md) | 简体中文
 
 ```shell
 wails init -n "ProjectName" -t https://github.com/airvip/wails-vite-vue-ts.git
 ```
 
-## About
+## 关于
 
-This is a Wails template project with Vue 3 and TypeScript, using Vite for
-asset bundling. It comes with the bare minimum, and can be extended by following
-the guides in this README. 
+这是一个 Wails 模板项目,使用 Vue 3 和 TypeScript,使用 Vite 为 asset bundling。
+它提供了最基本的东西,可以根据这篇 README 的指导进行扩展。
 
-If you would like a more feature packed version that includes all features
-documented below already added, please check out my
-[feature packed Vite + Vue3 TypeScript template](https://github.com/airvip/wails-vite-vue-the-works)
+如果你想要包含更多特性,请查看我的 [feature packed Vite + Vue3 TypeScript template](https://github.com/airvip/wails-vite-vue-the-works)
 
-## Live Development
 
-To run in live development mode, run `wails dev` in the project directory. In another terminal, go into the `frontend`
-directory and run `npm run dev`. Navigate to http://localhost:34115
-in your browser to connect to your application.
+## 实施开发
 
-Note: Typechecking is disabled. If you want to do type checking, use `npm run type-check`
+执行开发模式, 运行 `wails dev` 在项目目录. 在其他终端，进入 `frontend`
+目录并运行 `npm run dev`. 通过浏览器打开 http://localhost:34115 连接到你的应用。
 
-## Extending Features
+说明：类型检查已经被关闭。如果你想要进行类型检查,请使用 `npm run type-check`
 
-This template does not ship with things like routing, vuex, or sass.
-To add any of these features, simply follow the instructions below. Please
-note that all commands should be run in the `frontend` directory.
+## 扩展特性
+
+这个模板不包括路由、vuex 或 sass。
+增加这些功能，只需简单地按照下面的指导进行操作。
+请注意所有指令应该在 `frontend` 目录中运行。
 
 ### Sass
 
-Installation:
+安装:
 ```shell
 $ npm install --save-dev sass
 ```
 
-Usage:
+使用:
 
-You can now add Sass to your single file component
-styling like this:
+你可以添加 Sass 到单个文件组件样式如下:
 ```html
 <style lang="scss">
   /* scss styling */
@@ -49,13 +45,13 @@ styling like this:
 
 ### ESLint + Prettier
 
-Installation:
+安装:
 ```shell
 $ npm install --save-dev eslint prettier eslint-plugin-vue eslint-config-prettier @vue/eslint-config-typescript @typescript-eslint/parser @typescript-eslint/eslint-plugin
 $ touch .eslintrc && touch .prettierrc
 ```
 
-Usage: `eslintrc`
+使用: `eslintrc`
 ```json
 {
   "extends": [
@@ -71,7 +67,7 @@ Usage: `eslintrc`
 }
 ```
 
-Usage: `.prettierrc`
+使用: `.prettierrc`
 ```json
 {
   "semi": false,
@@ -88,13 +84,13 @@ Usage: `.prettierrc`
 
 ### Vuex
 
-Installation:
+安装:
 ```shell
 $ npm install --save vuex@next
 $ touch src/store.ts
 ```
 
-Usage: `src/store.ts`
+使用: `src/store.ts`
 ```ts
 import { InjectionKey } from 'vue'
 import { createStore, Store, useStore as baseUseStore } from 'vuex'
@@ -125,7 +121,7 @@ export function useStore() {
 }
 ```
 
-Usage: `src/main.ts`
+使用: `src/main.ts`
 ```ts
 import { createApp } from 'vue'
 import App from './App.vue'
@@ -134,7 +130,7 @@ import { store, key } from './store'
 createApp(App).use(store, key).mount('#app')
 ```
 
-Usage: `src/components/Home.vue`
+使用: `src/components/Home.vue`
 ```ts
 import { useStore } from '../store'
 const store = useStore()
@@ -143,13 +139,13 @@ const increment = () => store.commit('increment')
 
 ### Vue Router
 
-Installation:
+安装:
 ```shell
 $ npm install --save vue-router@4
 $ touch src/router.ts
 ```
 
-Usage: `src/router.ts`
+使用: `src/router.ts`
 ```ts
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from './components/Home.vue'
@@ -170,7 +166,7 @@ const router = createRouter({
 export default router
 ```
 
-Usage: `src/main.ts`
+使用: `src/main.ts`
 ```ts
 import { createApp } from 'vue'
 import App from './App.vue'
@@ -179,7 +175,7 @@ import router from './router'
 createApp(App).use(router).mount('#app')
 ```
 
-Usage: `src/App.vue`
+使用: `src/App.vue`
 ```html
 <template>
     <router-link to="/">Home</router-link>
@@ -187,13 +183,13 @@ Usage: `src/App.vue`
 </template>
 ```
 
-## Building 
+## 编译 
 
-To build this project in debug mode, use `wails build`. For production, use `wails build -production`.
-To generate a platform native package, add the `-package` flag.
+编译这个项目在 debug 模式，使用 `wails build`. 在生产模式下，使用 `wails build -production`。
+生产某个平台原生包，需要使用 `-package` 选项。
 
-## Known Issues
+## 已知问题
 
-- When making changes to the frontend, the browser reload will often happen too fast, causes issues. A refresh will fix the page.
-- Typechecking is turned off due to Wails depending on the frontend to build before it will compile the backend and generate bindings.
-- If you find any other problems, please create an issue.
+- 当你在开发模式下运行时,改变了前端页面，浏览器会非常快速的自动刷新页面，导致问题。刷新页面能解决。
+- 类型检查已经被关闭是因为 Wails 依赖于前端构建之前进行构建,生成绑定。
+- 如果你发现了其他问题,请创建一个 issue。
